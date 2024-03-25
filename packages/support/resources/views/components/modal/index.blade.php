@@ -6,8 +6,8 @@
 @props([
     'alignment' => Alignment::Start,
     'ariaLabelledby' => null,
-    'closeButton' => \Filament\Support\View\Components\Modal::$hasCloseButton,
-    'closeByClickingAway' => \Filament\Support\View\Components\Modal::$isClosedByClickingAway,
+    'closeButton' => Modal::$hasCloseButton,
+    'closeByClickingAway' => Modal::$isClosedByClickingAway,
     'closeEventName' => 'close-modal',
     'description' => null,
     'displayClasses' => 'inline-block',
@@ -30,6 +30,8 @@
 ])
 
 @php
+    use Illuminate\Support\Js;
+
     $hasDescription = filled($description);
     $hasHeading = filled($heading);
     $hasIcon = filled($icon);
@@ -46,7 +48,7 @@
         $width = filled($width) ? (MaxWidth::tryFrom($width) ?? $width) : null;
     }
 
-    $closeEventHandler = filled($id) ? '$dispatch(' . \Illuminate\Support\Js::from($closeEventName) . ', { id: ' . \Illuminate\Support\Js::from($id) . ' })' : 'close()';
+    $closeEventHandler = filled($id) ? '$dispatch(' . Js::from($closeEventName) . ', { id: ' . Js::from($id) . ' })' : 'close()';
 @endphp
 
 <div

@@ -28,13 +28,15 @@
         >
             @foreach ($blocks as $block)
                 @php
+                    use Illuminate\Support\Js;
+
                     $wireClickActionArguments = ['block' => $block->getName()];
 
                     if ($afterItem) {
                         $wireClickActionArguments['afterItem'] = $afterItem;
                     }
 
-                    $wireClickActionArguments = \Illuminate\Support\Js::from($wireClickActionArguments);
+                    $wireClickActionArguments = Js::from($wireClickActionArguments);
 
                     $wireClickAction = "mountFormComponentAction('{$statePath}', '{$action->getName()}', {$wireClickActionArguments})";
                 @endphp

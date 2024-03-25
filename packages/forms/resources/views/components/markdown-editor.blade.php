@@ -21,7 +21,7 @@
         >
             <div
                 ax-load="visible"
-                ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('markdown-editor', 'filament/forms') }}"
+                ax-load-src="{{ FilamentAsset::getAlpineComponentSrc('markdown-editor', 'filament/forms') }}"
                 x-data="markdownEditorFormComponent({
                             isLiveDebounced: @js($isLiveDebounced()),
                             isLiveOnBlur: @js($isLiveOnBlur()),

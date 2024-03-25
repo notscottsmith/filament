@@ -40,7 +40,7 @@
                 @else
                     ax-load
                 @endif
-                ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('textarea', 'filament/forms') }}"
+                ax-load-src="{{ FilamentAsset::getAlpineComponentSrc('textarea', 'filament/forms') }}"
                 x-data="textareaFormComponent({ initialHeight: @js($initialHeight) })"
                 x-ignore
                 x-intersect.once="render()"

@@ -1,12 +1,15 @@
 <x-dynamic-component :component="$getEntryWrapperView()" :entry="$entry">
     @php
+        use Illuminate\Support\Arr;
+        use Illuminate\Support\Collection;
+
         $state = $getState();
 
-        if ($state instanceof \Illuminate\Support\Collection) {
+        if ($state instanceof Collection) {
             $state = $state->all();
         }
 
-        $state = \Illuminate\Support\Arr::wrap($state);
+        $state = Arr::wrap($state);
 
         $limit = $getLimit();
         $limitedState = array_slice($state, 0, $limit);
@@ -29,7 +32,7 @@
             $limitedStateCount = 1;
         }
 
-        $ringClasses = \Illuminate\Support\Arr::toCssClasses([
+        $ringClasses = Arr::toCssClasses([
             'ring-white dark:ring-gray-900',
             match ($ring) {
                 0 => null,

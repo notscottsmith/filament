@@ -10,9 +10,11 @@
 
 <div class="fi-resource-relation-managers flex flex-col gap-y-6">
     @php
+        use Filament\Resources\RelationManagers\RelationManagerConfiguration;
+
         $activeManager = strval($activeManager);
-        $normalizeRelationManagerClass = function (string | Filament\Resources\RelationManagers\RelationManagerConfiguration $manager): string {
-            if ($manager instanceof \Filament\Resources\RelationManagers\RelationManagerConfiguration) {
+        $normalizeRelationManagerClass = function (string | RelationManagerConfiguration $manager): string {
+            if ($manager instanceof RelationManagerConfiguration) {
                 return $manager->relationManager;
             }
 
@@ -32,8 +34,10 @@
 
             @foreach ($tabs as $tabKey => $manager)
                 @php
+                    use Filament\Resources\RelationManagers\RelationGroup;
+
                     $tabKey = strval($tabKey);
-                    $isGroup = $manager instanceof \Filament\Resources\RelationManagers\RelationGroup;
+                    $isGroup = $manager instanceof RelationGroup;
 
                     if ($isGroup) {
                         $manager->ownerRecord($ownerRecord);
@@ -80,7 +84,7 @@
                 }
             @endphp
 
-            @if ($managers[$activeManager] instanceof \Filament\Resources\RelationManagers\RelationGroup)
+            @if ($managers[$activeManager] instanceof RelationGroup)
                 @foreach ($managers[$activeManager]->ownerRecord($ownerRecord)->pageClass($pageClass)->getManagers() as $groupedManagerKey => $groupedManager)
                     @php
                         $normalizedGroupedManagerClass = $normalizeRelationManagerClass($groupedManager);

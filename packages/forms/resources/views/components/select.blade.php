@@ -17,7 +17,7 @@
 <x-dynamic-component
     :component="$getFieldWrapperView()"
     :field="$field"
-    :inline-label-vertical-alignment="\Filament\Support\Enums\VerticalAlignment::Center"
+    :inline-label-vertical-alignment="VerticalAlignment::Center"
 >
     <x-filament::input.wrapper
         :disabled="$isDisabled"
@@ -102,7 +102,7 @@
                 @else
                     ax-load
                 @endif
-                ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('select', 'filament/forms') }}"
+                ax-load-src="{{ FilamentAsset::getAlpineComponentSrc('select', 'filament/forms') }}"
                 x-data="selectFormComponent({
                             canSelectPlaceholder: @js($canSelectPlaceholder),
                             isHtmlAllowed: @js($isHtmlAllowed()),

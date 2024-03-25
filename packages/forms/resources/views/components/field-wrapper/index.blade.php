@@ -24,9 +24,12 @@
 ])
 
 @php
+    use Filament\Forms\Components\Actions\Action;
+    use Filament\Forms\Components\Contracts\HasNestedRecursiveValidationRules;
+
     if ($field) {
         $hasInlineLabel ??= $field->hasInlineLabel();
-        $hasNestedRecursiveValidationRules ??= $field instanceof \Filament\Forms\Components\Contracts\HasNestedRecursiveValidationRules;
+        $hasNestedRecursiveValidationRules ??= $field instanceof HasNestedRecursiveValidationRules;
         $helperText ??= $field->getHelperText();
         $hint ??= $field->getHint();
         $hintActions ??= $field->getHintActions();
@@ -43,7 +46,7 @@
 
     $hintActions = array_filter(
         $hintActions ?? [],
-        fn (\Filament\Forms\Components\Actions\Action $hintAction): bool => $hintAction->isVisible(),
+        fn (Action $hintAction): bool => $hintAction->isVisible(),
     );
 
     $hasError = filled($statePath) && ($errors->has($statePath) || ($hasNestedRecursiveValidationRules && $errors->has("{$statePath}.*")));
@@ -71,7 +74,7 @@
             <div
                 @class([
                     'flex items-center justify-between gap-x-3',
-                    ($label instanceof \Illuminate\View\ComponentSlot) ? $label->attributes->get('class') : null,
+                    ($label instanceof ComponentSlot) ? $label->attributes->get('class') : null,
                 ])
             >
                 @if ($label && (! $labelSrOnly))

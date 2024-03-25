@@ -69,7 +69,7 @@
     @if ($icon && $iconPosition === IconPosition::Before)
         <x-filament::icon
             :icon="$icon"
-            :x-bind:class="$hasAlpineActiveClasses ? '{ ' . \Illuminate\Support\Js::from($inactiveIconClasses) . ': ! (' . $alpineActive . '), ' . \Illuminate\Support\Js::from($activeIconClasses) . ': ' . $alpineActive . ' }' : null"
+            :x-bind:class="$hasAlpineActiveClasses ? '{ ' . Js::from($inactiveIconClasses) . ': ! (' . $alpineActive . '), ' . Js::from($activeIconClasses) . ': ' . $alpineActive . ' }' : null"
             @class([
                 $iconClasses,
                 $inactiveIconClasses => (! $hasAlpineActiveClasses) && (! $active),
@@ -97,7 +97,7 @@
     @if ($icon && $iconPosition === IconPosition::After)
         <x-filament::icon
             :icon="$icon"
-            :x-bind:class="$hasAlpineActiveClasses ? '{ ' . \Illuminate\Support\Js::from($inactiveIconClasses) . ': ! (' . $alpineActive . '), ' . \Illuminate\Support\Js::from($activeIconClasses) . ': ' . $alpineActive . ' }' : null"
+            :x-bind:class="$hasAlpineActiveClasses ? '{ ' . Js::from($inactiveIconClasses) . ': ! (' . $alpineActive . '), ' . Js::from($activeIconClasses) . ': ' . $alpineActive . ' }' : null"
             @class([
                 $iconClasses,
                 $inactiveIconClasses => (! $hasAlpineActiveClasses) && (! $active),

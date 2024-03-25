@@ -28,7 +28,7 @@
                 @else
                     ax-load
                 @endif
-                ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('rich-editor', 'filament/forms') }}"
+                ax-load-src="{{ FilamentAsset::getAlpineComponentSrc('rich-editor', 'filament/forms') }}"
                 x-data="richEditorFormComponent({
                             state: $wire.{{ $applyStateBindingModifiers("\$entangle('{$statePath}')", isOptimisticallyLive: false) }},
                         })"

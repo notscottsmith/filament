@@ -18,7 +18,7 @@
         ])
     }}
 >
-    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::PAGE_START, scopes: $this->getRenderHookScopes()) }}
+    {{ FilamentView::renderHook(PanelsRenderHook::PAGE_START, scopes: $this->getRenderHookScopes()) }}
 
     <section
         @class([
@@ -39,13 +39,13 @@
                 :heading="$heading"
                 :subheading="$subheading"
             >
-                @if ($heading instanceof \Illuminate\Contracts\Support\Htmlable)
+                @if ($heading instanceof Htmlable)
                     <x-slot name="heading">
                         {{ $heading }}
                     </x-slot>
                 @endif
 
-                @if ($subheading instanceof \Illuminate\Contracts\Support\Htmlable)
+                @if ($subheading instanceof Htmlable)
                     <x-slot name="subheading">
                         {{ $subheading }}
                     </x-slot>
@@ -87,7 +87,7 @@
                     'h-full' => $fullHeight,
                 ])
             >
-                {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::PAGE_HEADER_WIDGETS_BEFORE, scopes: $this->getRenderHookScopes()) }}
+                {{ FilamentView::renderHook(PanelsRenderHook::PAGE_HEADER_WIDGETS_BEFORE, scopes: $this->getRenderHookScopes()) }}
 
                 @if ($headerWidgets = $this->getVisibleHeaderWidgets())
                     <x-filament-widgets::widgets
@@ -98,11 +98,11 @@
                     />
                 @endif
 
-                {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::PAGE_HEADER_WIDGETS_AFTER, scopes: $this->getRenderHookScopes()) }}
+                {{ FilamentView::renderHook(PanelsRenderHook::PAGE_HEADER_WIDGETS_AFTER, scopes: $this->getRenderHookScopes()) }}
 
                 {{ $slot }}
 
-                {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::PAGE_FOOTER_WIDGETS_BEFORE, scopes: $this->getRenderHookScopes()) }}
+                {{ FilamentView::renderHook(PanelsRenderHook::PAGE_FOOTER_WIDGETS_BEFORE, scopes: $this->getRenderHookScopes()) }}
 
                 @if ($footerWidgets = $this->getVisibleFooterWidgets())
                     <x-filament-widgets::widgets
@@ -113,7 +113,7 @@
                     />
                 @endif
 
-                {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::PAGE_FOOTER_WIDGETS_AFTER, scopes: $this->getRenderHookScopes()) }}
+                {{ FilamentView::renderHook(PanelsRenderHook::PAGE_FOOTER_WIDGETS_AFTER, scopes: $this->getRenderHookScopes()) }}
             </div>
 
             @if ($subNavigation && $subNavigationPosition === SubNavigationPosition::End)
@@ -128,7 +128,7 @@
         @endif
     </section>
 
-    @if (! ($this instanceof \Filament\Tables\Contracts\HasTable))
+    @if (! ($this instanceof HasTable))
         <x-filament-actions::modals />
     @elseif ($this->isTableLoaded() && filled($this->defaultTableAction))
         <div
@@ -142,7 +142,7 @@
         ></div>
     @endif
 
-    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::PAGE_END, scopes: $this->getRenderHookScopes()) }}
+    {{ FilamentView::renderHook(PanelsRenderHook::PAGE_END, scopes: $this->getRenderHookScopes()) }}
 
     <x-filament-panels::unsaved-action-changes-alert />
 </div>

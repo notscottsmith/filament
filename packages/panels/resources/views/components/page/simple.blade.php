@@ -14,7 +14,7 @@
         {{ $slot }}
     </section>
 
-    @if (! $this instanceof \Filament\Tables\Contracts\HasTable)
+    @if (! $this instanceof HasTable)
         <x-filament-actions::modals />
     @endif
 </div>

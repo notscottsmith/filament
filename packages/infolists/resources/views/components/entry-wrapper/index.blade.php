@@ -21,6 +21,7 @@
 ])
 
 @php
+    use Filament\Infolists\Components\Actions\Action;
     use Filament\Support\Enums\Alignment;
 
     if ($entry) {
@@ -48,7 +49,7 @@
 
     $hintActions = array_filter(
         $hintActions ?? [],
-        fn (\Filament\Infolists\Components\Actions\Action $hintAction): bool => $hintAction->isVisible(),
+        fn (Action $hintAction): bool => $hintAction->isVisible(),
     );
 @endphp
 
